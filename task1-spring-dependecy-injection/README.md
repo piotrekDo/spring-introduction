@@ -1,5 +1,6 @@
 # Dependency Injection
 
+### Task 1
 Try to implement `ProductService` to use `ProductDiscountApplier` to apply discount. \
 Use dependecy injection in 3 ways: 
 - inject by counstructor
@@ -7,6 +8,8 @@ Use dependecy injection in 3 ways:
 - inject by setter
 Which is the best and why?
 
+
+### Task 2
 Create new bean `ProductRepostiory` which will have
 ```java
     private final List<Product> products = Arrays.asList(
@@ -27,3 +30,5 @@ to
 public Product getProductBeforeDiscount(long id) ...
 public Product getProductAfterDiscount(long id) ...
 ```
+
+### Estimated time: 30 min (+3-5 min to clone repo and start project)
