@@ -1,0 +1,5 @@
+ARTICLES:
+GET /articles/
+    response:
+    200 - OK
+    [{"id": 1, "title": "some tile"}, {"id": 1, "title": "some tile"}]

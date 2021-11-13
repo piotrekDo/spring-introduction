@@ -1,0 +1,57 @@
+ARTICLES:
+GET /articles/
+    response:
+    200 - OK
+    [{"id": 1, "title": "some tile"}, {"id": 1, "title": "some tile"}]
+
+GET /articles/{id}
+    response:
+    200 - OK
+    {"id": 1, "title": "some tile"}
+
+POST /articles/
+    request:
+    {"id": null, "title": "some tile"}
+    response:
+    200 - OK
+    {"id": 3, "title": "some tile}
+
+PUT /articles/{id}
+    request:
+    {"id": 3, "title": "new name"}
+    response:
+    200 - OK
+    {"id": 3, "title": "new name"}
+
+DELETE /articles/{id}
+    response:
+    204 - NO CONTENT
+
+COMMENTS:
+GET /articles/{articleId}/comment
+    response:
+    200 - OK
+    [{"id": 1, "content": "some comment 1"}, {"id": 1, "content": "some comment 2"}]
+
+GET /articles/{articleId}/comment/{commentId}
+    response:
+    200 - OK
+    {"id": 1, "content": "some comment 1"}
+
+POST /articles/{articleId}/comment
+    request:
+    {"id": 1, "content": "some comment 1"}
+    response:
+    200 - OK
+    {"id": 1, "content": "some comment 1"}
+
+PUT /articles/{articleId}/comment/{commentId}
+    request:
+    {"id": 1, "content": "updated comment 1"}
+    response:
+    200 - OK
+    {"id": 1, "content": "updated comment 1"}
+
+DELETE /articles/{articleId}/comment/{commentId}
+    response:
+    204 - NO CONTENT
