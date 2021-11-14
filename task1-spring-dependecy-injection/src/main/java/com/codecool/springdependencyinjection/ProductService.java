@@ -2,24 +2,29 @@ package com.codecool.springdependencyinjection;
 
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class ProductService {
 
-    private final Product product = new Product(BigDecimal.valueOf(23.50));
+    private final ProductDiscountApplier productDiscountApplier;
+    private final ProductRepository productRepository;
 
-    public Product getProductBeforeDiscount(){
-        return product;
+    public ProductService(ProductDiscountApplier productDiscountApplier, ProductRepository productRepository) {
+        this.productDiscountApplier = productDiscountApplier;
+        this.productRepository = productRepository;
     }
 
-    public Product getProductAfterDiscount(){
-        //apply discount here
+    public Product getProductBeforeDiscount(long id){
+         return productRepository.get(id).orElseThrow(() -> {
+             throw new NoSuchElementException("No product found with ID: " + id);
+         });
+    }
 
-        throw new IllegalArgumentException("Not Implemented Yet!!!");
+    public Product getProductAfterDiscount(long id){
+        Product product = productRepository.get(id).orElseThrow(() -> {
+            throw new NoSuchElementException("No product found with ID: " + id);
+        });
+        return productDiscountApplier.applyDiscount(product);
     }
 }
